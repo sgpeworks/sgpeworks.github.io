@@ -39,7 +39,7 @@ to your GitHub Pages address:
    File uploads are delivered as email attachments (20MB practical limit).
 2. **Custom domain (optional).** If you later point a custom domain (e.g.
    `sgprecisionengineering.in`) at this GitHub Pages site, re-run a find and
-   replace of `https://sgpeworks.github.io/sgpeworks/` → your new domain
+   replace of `https://sgpeworks.github.io/` → your new domain
    across `index.html`, `sitemap.xml` and `robots.txt`, and add a `CNAME`
    file as GitHub's docs describe.
 3. **Photography.** The Gallery section and hero card currently use drawn
