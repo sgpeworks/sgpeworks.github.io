@@ -110,8 +110,11 @@
   });
 
   // ---- AJAX form submit (FormSubmit.co — no backend required) ----
-  // Redirects to thank-you.html on success. Falls back to a normal
-  // POST (with _next set) if fetch is unavailable.
+  // FormSubmit requires the dedicated /ajax/ endpoint for fetch-based
+  // submissions (the plain endpoint expects a full-page POST + redirect
+  // and can get blocked by CORS when called via fetch). We derive the
+  // ajax URL from the form's normal action so the form still degrades
+  // to a working full-page POST if JavaScript is unavailable.
   document.querySelectorAll("form[data-ajax]").forEach(function (form) {
     form.addEventListener("submit", function (e) {
       var msg = form.querySelector(".form-msg");
@@ -123,7 +126,9 @@
       var originalText = submitBtn ? submitBtn.textContent : "";
       if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Sending..."; }
 
-      fetch(form.action, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } })
+      var ajaxUrl = form.action.replace("formsubmit.co/", "formsubmit.co/ajax/");
+
+      fetch(ajaxUrl, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } })
         .then(function (res) {
           if (res.ok) {
             window.location.href = "thank-you.html";
@@ -133,7 +138,7 @@
         })
         .catch(function () {
           if (msg) {
-            msg.textContent = "Something went wrong sending the form. Please call +91 80105 12390 or email sgpe.india@gmail.com directly.";
+            msg.textContent = "Something went wrong sending the form. Please call +91 80105 12390 or email sgpeworks@gmail.com directly.";
             msg.classList.add("show", "error");
           }
         })

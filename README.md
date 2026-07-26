@@ -32,14 +32,14 @@ to your GitHub Pages address:
    LinkedIn etc. show a proper preview card instead of nothing.
 
 ## Before you go live
-1. **Forms.** The Quote and Contact forms post to `formsubmit.co/sgpe.india@gmail.com` —
+1. **Forms.** The Quote and Contact forms post to `formsubmit.co/sgpeworks@gmail.com` —
    a free service that emails submissions to you with no backend required.
    The **first submission** triggers a confirmation email from FormSubmit to
-   sgpe.india@gmail.com — click the link in it once to activate the form.
+   sgpeworks@gmail.com — click the link in it once to activate the form.
    File uploads are delivered as email attachments (20MB practical limit).
 2. **Custom domain (optional).** If you later point a custom domain (e.g.
    `sgprecisionengineering.in`) at this GitHub Pages site, re-run a find and
-   replace of `https://sgpeworks.github.io/` → your new domain
+   replace of `https://sgpeworks.github.io/sgpeworks/` → your new domain
    across `index.html`, `sitemap.xml` and `robots.txt`, and add a `CNAME`
    file as GitHub's docs describe.
 3. **Photography.** The Gallery section and hero card currently use drawn
