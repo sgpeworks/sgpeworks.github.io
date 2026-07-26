@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>FormSubmit test</title></head>
+<body>
+  <h3>FormSubmit isolation test — no JavaScript involved</h3>
+  <p>Submitting this sends a plain POST straight to FormSubmit. If sgpe.india@gmail.com
+     never receives anything (including spam) after this, the issue is on the
+     FormSubmit/email side, not in the website's code.</p>
+  <form action="https://formsubmit.co/sgpe.india@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="FormSubmit isolation test">
+    <input type="text" name="Test Field" value="This is a plain test submission" readonly><br><br>
+    <button type="submit">Send test</button>
+  </form>
+</body>
+</html>
