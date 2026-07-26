@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /thank-you.html
+
+Sitemap: https://sgpeworks.github.io/sgpeworks/sitemap.xml
