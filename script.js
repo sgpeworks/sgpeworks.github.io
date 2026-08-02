@@ -2,12 +2,6 @@
 (function () {
   "use strict";
 
-  // ---- Page loader ----
-  window.addEventListener("load", function () {
-    var loader = document.getElementById("page-loader");
-    if (loader) setTimeout(function () { loader.classList.add("hide"); }, 250);
-  });
-
   // ---- Year in footer ----
   document.querySelectorAll("[data-year]").forEach(function (el) {
     el.textContent = new Date().getFullYear();
@@ -108,6 +102,45 @@
       }
     }
   });
+
+  // ---- Gallery slider ----
+  var galSlider = document.querySelector(".gal-slider");
+  if (galSlider) {
+    var galViewport = galSlider.querySelector(".gal-viewport");
+    var galTrack = galSlider.querySelector(".gal-track");
+    var galSlides = Array.prototype.slice.call(galTrack.children);
+    var galDots = Array.prototype.slice.call(galSlider.querySelectorAll(".gal-dot"));
+    var galPrev = galSlider.querySelector(".gal-prev");
+    var galNext = galSlider.querySelector(".gal-next");
+
+    function galScrollToSlide(index) {
+      var target = galSlides[index];
+      if (target) galViewport.scrollTo({ left: target.offsetLeft - galTrack.offsetLeft, behavior: "smooth" });
+    }
+
+    if (galPrev) galPrev.addEventListener("click", function () {
+      galViewport.scrollBy({ left: -galViewport.clientWidth * 0.9, behavior: "smooth" });
+    });
+    if (galNext) galNext.addEventListener("click", function () {
+      galViewport.scrollBy({ left: galViewport.clientWidth * 0.9, behavior: "smooth" });
+    });
+    galDots.forEach(function (dot, i) {
+      dot.addEventListener("click", function () { galScrollToSlide(i); });
+    });
+
+    if ("IntersectionObserver" in window && galDots.length) {
+      var galIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var idx = galSlides.indexOf(entry.target);
+          if (idx === -1) return;
+          galDots.forEach(function (d) { d.classList.remove("active"); });
+          galDots[idx].classList.add("active");
+        });
+      }, { root: galViewport, threshold: 0.6 });
+      galSlides.forEach(function (s) { galIo.observe(s); });
+    }
+  }
 
   // ---- AJAX form submit (FormSubmit.co — no backend required) ----
   // FormSubmit requires the dedicated /ajax/ endpoint for fetch-based
