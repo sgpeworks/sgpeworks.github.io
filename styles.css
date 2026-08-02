@@ -63,7 +63,7 @@ h1,h2,h3,h4{font-family:var(--font-display);margin:0;line-height:1.08;letter-spa
 /* Headings default to navy-950, which is also the dark-surface background —
    these headings were rendering invisible (1:1) on every dark block. */
 .section-dark h1,.section-dark h2,.section-dark h3,.section-dark h4,
-.contact-card h3,.cta-banner h3,
+.contact-card h3,
 .site-footer h1,.site-footer h2,.site-footer h3,.site-footer h4{color:var(--white);}
 p{margin:0;}
 button{font-family:inherit;cursor:pointer;}
@@ -535,17 +535,6 @@ section{padding:clamp(56px,7.5vw,96px) 0;}
 .contact-grid .form-shell form{display:flex;flex-direction:column;flex:1;}
 .contact-grid .form-shell .form-note{margin-top:auto;padding-top:14px;}
 @media (max-width:900px){.contact-grid{grid-template-columns:1fr;}.contact-grid .contact-card,.contact-grid .form-shell{height:auto;}}
-
-/* ---------- CTA banner ---------- */
-.cta-banner{
-  background:var(--navy-900);
-  border-radius:var(--radius-lg);padding:52px 44px;color:var(--white);
-  display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;
-  position:relative;overflow:hidden;
-}
-.cta-banner h3{font-size:26px;max-width:20ch;position:relative;}
-.cta-banner p{color:var(--steel-300);margin-top:10px;position:relative;}
-.cta-actions{display:flex;gap:12px;flex-wrap:wrap;position:relative;}
 
 /* ---------- Footer (minimal) ---------- */
 .site-footer{background:var(--navy-950);color:var(--steel-300);padding:36px 0 22px;}
